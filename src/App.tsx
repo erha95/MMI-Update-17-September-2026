@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { MovingBannerSection } from './components/MovingBannerSection';
 import { PhilosophySection } from './components/PhilosophySection';
 import { JourneyStagesSection } from './components/JourneyStagesSection';
 import { ProgramCatalogSection } from './components/ProgramCatalogSection';
 import { PhaseAssessmentTool } from './components/PhaseAssessmentTool';
 import { LicensingRoadmapSection } from './components/LicensingRoadmapSection';
 import { StatsSection } from './components/StatsSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
 import { FaqSection } from './components/FaqSection';
 import { FinalCtaSection } from './components/FinalCtaSection';
 import { Footer } from './components/Footer';
@@ -78,6 +78,10 @@ export default function App() {
           onSelectStage={handleSelectStage}
         />
 
+        <MovingBannerSection
+          onOpenConsultation={handleOpenConsultation}
+        />
+
         <PhilosophySection />
 
         <JourneyStagesSection
@@ -99,8 +103,6 @@ export default function App() {
         <LicensingRoadmapSection />
 
         <StatsSection />
-
-        <TestimonialsSection />
 
         <FaqSection />
 

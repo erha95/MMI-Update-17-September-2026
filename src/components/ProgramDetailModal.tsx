@@ -14,8 +14,12 @@ import {
   GraduationCap,
   Layers,
   BookOpen,
-  Briefcase
+  Briefcase,
+  Calendar
 } from 'lucide-react';
+import { WppeScheduleTable } from './WppeScheduleTable';
+import { WmiScheduleTable } from './WmiScheduleTable';
+import { WpeeScheduleTable } from './WpeeScheduleTable';
 
 interface ProgramDetailModalProps {
   program: ProgramItem | null;
@@ -29,7 +33,7 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
   onOpenConsultation
 }) => {
   const { t, isEn } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'desc' | 'units' | 'requirements' | 'methods'>('desc');
+  const [activeTab, setActiveTab] = useState<'desc' | 'units' | 'requirements' | 'methods' | 'schedule'>('desc');
 
   if (!program) return null;
 
@@ -141,6 +145,48 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
               <BookOpen className="w-3.5 h-3.5" />
               <span>{t.modals.detail.tabs.methods}</span>
             </button>
+
+            {program.code === 'WPPE' && (
+              <button
+                onClick={() => setActiveTab('schedule')}
+                className={`px-3 sm:px-4 py-2 text-xs font-bold rounded-[3px] transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                  activeTab === 'schedule'
+                    ? 'bg-[#16A34A] text-white shadow-xs'
+                    : 'bg-[#DCFCE7] text-[#15803D] hover:bg-[#bbf7d0]'
+                }`}
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Jadwal BINUS (16-24 Nov)</span>
+              </button>
+            )}
+
+            {program.code === 'WMI' && (
+              <button
+                onClick={() => setActiveTab('schedule')}
+                className={`px-3 sm:px-4 py-2 text-xs font-bold rounded-[3px] transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                  activeTab === 'schedule'
+                    ? 'bg-[#E11D48] text-white shadow-xs'
+                    : 'bg-[#FFE4E6] text-[#BE123C] hover:bg-[#fecdd3]'
+                }`}
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Jadwal BINUS (16-26 Nov)</span>
+              </button>
+            )}
+
+            {program.code === 'WPEE' && (
+              <button
+                onClick={() => setActiveTab('schedule')}
+                className={`px-3 sm:px-4 py-2 text-xs font-bold rounded-[3px] transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                  activeTab === 'schedule'
+                    ? 'bg-[#EAB308] text-[#0F2415] shadow-xs'
+                    : 'bg-[#FEF9C3] text-[#854D0E] hover:bg-[#fef08a]'
+                }`}
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Jadwal BINUS (16-30 Nov)</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -149,6 +195,93 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
           {/* TAB 1: DESKRIPSI PELATIHAN */}
           {activeTab === 'desc' && (
             <div className="space-y-6 animate-in fade-in duration-150">
+              {/* Special Partnership Banner for WPPE */}
+              {program.code === 'WPPE' && (
+                <div className="bg-[#FEF08A]/35 border-2 border-[#EAB308]/40 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-mono text-[11px] font-bold bg-[#0F2415] text-[#B6FF1A] px-2 py-0.5 rounded">
+                        BATCH NOVEMBER 2026
+                      </span>
+                      <span className="font-mono text-xs font-bold text-[#854D0E]">
+                        Kemitraan Resmi BINUS CENTER
+                      </span>
+                    </div>
+                    <h4 className="font-display font-bold text-base text-[#0F2415]">
+                      Jadwal Kelas WPPE: 16 – 24 November 2026 (7 Sesi / 12 Jam)
+                    </h4>
+                    <p className="text-xs text-[#4B5C4E] mt-0.5">
+                      Technical Meeting 16 Nov • 6 Sesi Materi & Roleplay 17-24 Nov (18.30-20.30 WIB via Zoom)
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setActiveTab('schedule')}
+                    className="inline-flex items-center gap-1.5 bg-[#16A34A] hover:bg-[#15803D] text-white font-mono text-xs font-bold px-3.5 py-2 rounded-lg transition-all shadow-xs shrink-0 cursor-pointer"
+                  >
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>Lihat Tabel Jadwal Lengkap →</span>
+                  </button>
+                </div>
+              )}
+
+              {/* Special Partnership Banner for WMI */}
+              {program.code === 'WMI' && (
+                <div className="bg-[#FEF08A]/35 border-2 border-[#EAB308]/40 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-mono text-[11px] font-bold bg-[#0F2415] text-[#B6FF1A] px-2 py-0.5 rounded">
+                        BATCH NOVEMBER 2026
+                      </span>
+                      <span className="font-mono text-xs font-bold text-[#854D0E]">
+                        Kemitraan Resmi BINUS CENTER
+                      </span>
+                    </div>
+                    <h4 className="font-display font-bold text-base text-[#0F2415]">
+                      Jadwal Kelas WMI: 16 – 26 November 2026 (8 Sesi / 14 Jam)
+                    </h4>
+                    <p className="text-xs text-[#4B5C4E] mt-0.5">
+                      Technical Meeting 16 Nov • 7 Sesi Materi & Roleplay 18-26 Nov (18.30-20.30 WIB via Zoom)
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setActiveTab('schedule')}
+                    className="inline-flex items-center gap-1.5 bg-[#E11D48] hover:bg-[#be123c] text-white font-mono text-xs font-bold px-3.5 py-2 rounded-lg transition-all shadow-xs shrink-0 cursor-pointer"
+                  >
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>Lihat Tabel Jadwal Lengkap →</span>
+                  </button>
+                </div>
+              )}
+
+              {/* Special Partnership Banner for WPEE */}
+              {program.code === 'WPEE' && (
+                <div className="bg-[#FEF08A]/35 border-2 border-[#EAB308]/40 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-mono text-[11px] font-bold bg-[#0F2415] text-[#B6FF1A] px-2 py-0.5 rounded">
+                        BATCH NOVEMBER 2026
+                      </span>
+                      <span className="font-mono text-xs font-bold text-[#854D0E]">
+                        Kemitraan Resmi BINUS CENTER
+                      </span>
+                    </div>
+                    <h4 className="font-display font-bold text-base text-[#0F2415]">
+                      Jadwal Kelas WPEE: 16 – 30 November 2026 (9 Sesi / 16 Jam)
+                    </h4>
+                    <p className="text-xs text-[#4B5C4E] mt-0.5">
+                      Technical Meeting 16 Nov • 8 Sesi Materi, Kertas Kerja & Roleplay 19-30 Nov (18.30-20.30 WIB via Zoom)
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setActiveTab('schedule')}
+                    className="inline-flex items-center gap-1.5 bg-[#EAB308] hover:bg-[#ca8a04] text-[#0F2415] font-mono text-xs font-bold px-3.5 py-2 rounded-lg transition-all shadow-xs shrink-0 cursor-pointer"
+                  >
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>Lihat Tabel Jadwal Lengkap →</span>
+                  </button>
+                </div>
+              )}
+
               {/* Official Description */}
               <div className="bg-white p-5 rounded-[8px] border border-[#0F2415]/15 shadow-2xs">
                 <div className="flex items-center gap-2 mb-3">
@@ -446,6 +579,15 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
                   </div>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* TAB 5: JADWAL KEMITRAAN BINUS CENTER (WPPE, WMI, WPEE) */}
+          {activeTab === 'schedule' && (
+            <div className="space-y-4 animate-in fade-in duration-150">
+              {program.code === 'WPPE' && <WppeScheduleTable showCta={true} />}
+              {program.code === 'WMI' && <WmiScheduleTable showCta={true} />}
+              {program.code === 'WPEE' && <WpeeScheduleTable showCta={true} />}
             </div>
           )}
         </div>

@@ -33,7 +33,7 @@ export const PROGRAMS_DATA: ProgramItem[] = [
     ],
     duration: '16 Jam Pembelajaran (Public / In House: 16 Jam, Private: 6 Jam)',
     format: 'Live Interactive Online / Offline Class + Studi Kasus Prospektus IPO',
-    schedule: 'Executive Evening & Weekend Class',
+    schedule: 'Batch BINUS CENTER: 16-30 November 2026 (9 Sesi / 16 Jam) | Executive Evening & Weekend Class',
     investment: 'Rp 3.800.000',
     earlyBird: 'Rp 3.200.000',
     pricing: {
@@ -164,7 +164,7 @@ export const PROGRAMS_DATA: ProgramItem[] = [
     ],
     duration: '14 Jam Pembelajaran (Public / In House: 14 Jam, Private: 6 Jam)',
     format: 'Live Interactive Online / Offline Class + Portofolio Modeling Spreadsheet',
-    schedule: 'Executive Evening & Weekend Class',
+    schedule: 'Batch BINUS CENTER: 16-26 November 2026 (8 Sesi / 14 Jam) | Executive Evening 18.30-20.30 WIB',
     investment: 'Rp 4.500.000',
     earlyBird: 'Rp 3.850.000',
     pricing: {
@@ -285,7 +285,7 @@ export const PROGRAMS_DATA: ProgramItem[] = [
     ],
     duration: '12 Jam Pembelajaran (Public / In House: 12 Jam, Private: 6 Jam)',
     format: 'Live Interactive Online / Offline Class + Bank Soal CAT Ujian Asesmen',
-    schedule: 'Executive Evening & Weekend Class',
+    schedule: 'Batch BINUS CENTER: 16-24 November 2026 (7 Sesi / 12 Jam) | Executive Evening 18.30-20.30 WIB',
     investment: 'Rp 2.950.000',
     earlyBird: 'Rp 2.450.000',
     pricing: {
